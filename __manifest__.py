@@ -6,7 +6,7 @@
     'category': 'Field Service',
     'summary': 'Add customizable worksheets and PDF export to Field Service',
     'depends': [
-        'field_service',
+        'fieldservice',
     ],
     'data': [
         'views/field_service_worksheet_views.xml',
