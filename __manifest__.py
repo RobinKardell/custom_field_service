@@ -1,16 +1,13 @@
 {
-    'name': 'Custom Field Service Worksheet',
+    'name': 'Field Service Worksheets',
     'version': '1.0',
-    'author': 'Your Name',
-    'license': 'AGPL-3',
     'category': 'Field Service',
-    'summary': 'Add customizable worksheets and PDF export to Field Service',
-    'depends': [
-        'fieldservice',
-    ],
+    'summary': 'Add worksheets to FSM orders',
+    'depends': ['fieldservice'],
     'data': [
+        'data/sequence.xml',
         'views/field_service_worksheet_views.xml',
-        'report/field_service_worksheet_templates.xml',
+        'views/field_service_worksheet_action.xml',
     ],
     'installable': True,
     'application': False,
