@@ -1,7 +1,0 @@
-<odoo>
-    <record id="action_field_service_worksheet" model="ir.actions.act_window">
-        <field name="name">Worksheets</field>
-        <field name="res_model">field.service.worksheet</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-</odoo>

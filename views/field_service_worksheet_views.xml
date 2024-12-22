@@ -1,8 +1,9 @@
 <odoo>
+    <!-- Trädvy -->
     <record id="view_field_service_worksheet_tree" model="ir.ui.view">
         <field name="name">field.service.worksheet.tree</field>
         <field name="model">field.service.worksheet</field>
-        <field name="arch" type="tree">
+        <field name="arch" type="xml">
             <tree string="Worksheets">
                 <field name="name"/>
                 <field name="order_id"/>
@@ -12,7 +13,7 @@
         </field>
     </record>
 
-
+    <!-- Formulärvy -->
     <record id="view_field_service_worksheet_form" model="ir.ui.view">
         <field name="name">field.service.worksheet.form</field>
         <field name="model">field.service.worksheet</field>
@@ -20,36 +21,40 @@
             <form string="Worksheet Form">
                 <sheet>
                     <group>
-                        <field name="name" readonly="1" attrs="{'readonly': [('state', 'in', ['done'])]}"/>
+                        <field name="name" readonly="1" attrs="{'readonly': [('state', '=', 'done')]}"/>
                         <field name="order_id" readonly="1" attrs="{'readonly': [('state', '=', 'done')]}"/>
                         <field name="date" readonly="1" attrs="{'readonly': [('state', '=', 'done')]}"/>
                         <field name="state" readonly="1"/>
                     </group>
                     <notebook>
                         <page string="Checklist">
-                            <field name="checklist_ids" widget="one2many_list">
+                            <field name="checklist_ids" widget="one2many">
                                 <tree string="Checklist">
                                     <field name="name"/>
                                     <field name="is_done"/>
                                 </tree>
                                 <form string="Checklist Item">
-                                    <field name="name"/>
-                                    <field name="is_done"/>
+                                    <sheet>
+                                        <field name="name"/>
+                                        <field name="is_done"/>
+                                    </sheet>
                                 </form>
                             </field>
                         </page>
                         <page string="Custom Fields">
-                            <field name="custom_field_ids" widget="one2many_list">
+                            <field name="custom_field_ids" widget="one2many">
                                 <tree string="Custom Fields">
                                     <field name="name"/>
                                     <field name="field_type"/>
                                 </tree>
                                 <form string="Custom Field">
-                                    <field name="name"/>
-                                    <field name="field_type"/>
-                                    <field name="value_char" attrs="{'invisible': [('field_type', '!=', 'char')]}"/>
-                                    <field name="value_integer" attrs="{'invisible': [('field_type', '!=', 'integer')]}"/>
-                                    <field name="value_boolean" attrs="{'invisible': [('field_type', '!=', 'boolean')]}"/>
+                                    <sheet>
+                                        <field name="name"/>
+                                        <field name="field_type"/>
+                                        <field name="value_char" attrs="{'invisible': [('field_type', '!=', 'char')]}"/>
+                                        <field name="value_integer" attrs="{'invisible': [('field_type', '!=', 'integer')]}"/>
+                                        <field name="value_boolean" attrs="{'invisible': [('field_type', '!=', 'boolean')]}"/>
+                                    </sheet>
                                 </form>
                             </field>
                         </page>
@@ -66,6 +71,14 @@
         </field>
     </record>
 
+    <!-- Action -->
+    <record id="action_field_service_worksheet" model="ir.actions.act_window">
+        <field name="name">Worksheets</field>
+        <field name="res_model">field.service.worksheet</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menyalternativ -->
     <menuitem id="menu_field_service_worksheet" 
               name="Worksheets" 
               parent="fsm.menu_fsm_root" 
