@@ -8,6 +8,7 @@
         'data/sequence.xml',
         'views/field_service_worksheet_views.xml',
         'views/field_service_worksheet_action.xml',
+        'views/field_service_menus.xml',
     ],
     'installable': True,
     'application': False,

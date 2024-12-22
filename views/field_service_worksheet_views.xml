@@ -3,7 +3,7 @@
         <field name="name">field.service.worksheet.tree</field>
         <field name="model">field.service.worksheet</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree string="Worksheets">
                 <field name="name"/>
                 <field name="order_id"/>
                 <field name="date"/>
@@ -16,34 +16,34 @@
         <field name="name">field.service.worksheet.form</field>
         <field name="model">field.service.worksheet</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Worksheet Form">
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="order_id"/>
-                        <field name="date"/>
-                        <field name="state"/>
+                        <field name="name" readonly="1" attrs="{'readonly': [('state', 'in', ['done'])]}"/>
+                        <field name="order_id" readonly="1" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                        <field name="date" readonly="1" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                        <field name="state" readonly="1"/>
                     </group>
                     <notebook>
                         <page string="Checklist">
-                            <field name="checklist_ids">
-                                <tree>
+                            <field name="checklist_ids" widget="one2many_list">
+                                <tree string="Checklist">
                                     <field name="name"/>
                                     <field name="is_done"/>
                                 </tree>
-                                <form>
+                                <form string="Checklist Item">
                                     <field name="name"/>
                                     <field name="is_done"/>
                                 </form>
                             </field>
                         </page>
                         <page string="Custom Fields">
-                            <field name="custom_field_ids">
-                                <tree>
+                            <field name="custom_field_ids" widget="one2many_list">
+                                <tree string="Custom Fields">
                                     <field name="name"/>
                                     <field name="field_type"/>
                                 </tree>
-                                <form>
+                                <form string="Custom Field">
                                     <field name="name"/>
                                     <field name="field_type"/>
                                     <field name="value_char" attrs="{'invisible': [('field_type', '!=', 'char')]}"/>
@@ -53,10 +53,21 @@
                             </field>
                         </page>
                     </notebook>
+                    <footer>
+                        <button name="action_start" type="object" string="Start" class="btn-primary"
+                                attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                        <button name="action_done" type="object" string="Mark as Done" class="btn-success"
+                                attrs="{'invisible': [('state', '!=', 'in_progress')]}"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <menuitem id="menu_field_service_worksheet" name="Worksheets" parent="fsm.menu_fsm_root" sequence="20" action="action_field_service_worksheet"/>
+    <menuitem id="menu_field_service_worksheet" 
+              name="Worksheets" 
+              parent="fsm.menu_fsm_root" 
+              sequence="20" 
+              action="action_field_service_worksheet"/>
 </odoo>

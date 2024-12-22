@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_field_service_worksheet,access_field_service_worksheet,model_field_service_worksheet,base.group_user,1,1,1,1
+access_field_service_checklist,access_field_service_checklist,model_field_service_checklist,base.group_user,1,1,1,1
+access_field_service_custom_field,access_field_service_custom_field,model_field_service_custom_field,base.group_user,1,1,1,1
