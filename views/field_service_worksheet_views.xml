@@ -1,16 +1,16 @@
 <odoo>
     <record id="view_field_service_worksheet_tree" model="ir.ui.view">
-    <field name="name">field.service.worksheet.tree</field>
-    <field name="model">field.service.worksheet</field>
-    <field name="arch" type="xml">
-        <tree string="Worksheets">
-            <field name="name"/>
-            <field name="order_id"/>
-            <field name="date"/>
-            <field name="state"/>
-        </tree>
-    </field>
-</record>
+        <field name="name">field.service.worksheet.tree</field>
+        <field name="model">field.service.worksheet</field>
+        <field name="arch" type="xml">
+            <tree string="Worksheets">
+                <field name="name"/>
+                <field name="order_id"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
 
 
     <record id="view_field_service_worksheet_form" model="ir.ui.view">
