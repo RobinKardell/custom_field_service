@@ -2,7 +2,7 @@
     <record id="view_field_service_worksheet_tree" model="ir.ui.view">
         <field name="name">field.service.worksheet.tree</field>
         <field name="model">field.service.worksheet</field>
-        <field name="arch" type="xml">
+        <field name="arch" type="tree">
             <tree string="Worksheets">
                 <field name="name"/>
                 <field name="order_id"/>
